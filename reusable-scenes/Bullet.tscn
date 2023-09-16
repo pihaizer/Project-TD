@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bybstfav7hsft"]
+
+[ext_resource type="Script" path="res://src/Bullet.cs" id="1_s426b"]
+[ext_resource type="Texture2D" uid="uid://4lt17y7u1l05" path="res://assets/kenney-tower-defense/raw.svg" id="2_6oktw"]
+[ext_resource type="PackedScene" uid="uid://be0sbfsvat0i0" path="res://reusable-scenes/HitParticles.tscn" id="2_a4p6q"]
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_s426b")
+Speed = 2500.0
+HitEffect = ExtResource("2_a4p6q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6oktw")
+region_enabled = true
+region_rect = Rect2(2816, 1408, 128, 128)

@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgyhw6qbm4rgv"]
+
+[ext_resource type="Texture2D" uid="uid://4lt17y7u1l05" path="res://assets/kenney-tower-defense/raw.svg" id="1_gh60a"]
+[ext_resource type="PackedScene" uid="uid://b8mgi37yu61qc" path="res://reusable-scenes/SimpleTower.tscn" id="1_wr1pd"]
+[ext_resource type="Script" path="res://src/TowerFollowMouse.cs" id="2_7cgpb"]
+[ext_resource type="Script" path="res://src/FollowMouse.cs" id="3_hu3jr"]
+[ext_resource type="TileSet" uid="uid://c1p1ospdr3js" path="res://assets/kenney-tower-defense/tileset.tres" id="5_4cfr4"]
+[ext_resource type="PackedScene" uid="uid://cckf5h5lbbpcg" path="res://reusable-scenes/EnemyUnit.tscn" id="6_px0yo"]
+[ext_resource type="Script" path="res://src/CameraController.cs" id="7_vesi6"]
+
+[sub_resource type="Curve2D" id="Curve2D_ek0j3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 192, -16.5, 0, 16.5, 0, 288, 192, -1.5606, -18.5614, 1.5606, 18.5614, 320, 224, 0, -18.2114, 0, 18.2114, 320, 416, -16.617, -0.176777, 16.617, 0.176777, 352, 448, -17.3017, -0.235969, 17.3017, 0.235969, 1056, 448, 0, 15.9099, 0, -15.9099, 1088, 416, 0.353553, 20.0125, -0.353553, -20.0125, 1088, 224, -15.3796, 0, 15.3796, 0, 1120, 192, 0, 0, 0, 0, 1536, 192)
+}
+point_count = 10
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Towers" type="Node" parent="."]
+
+[node name="SimpleTower" parent="Towers" instance=ExtResource("1_wr1pd")]
+position = Vector2(448, 64)
+
+[node name="SimpleTower2" parent="Towers" instance=ExtResource("1_wr1pd")]
+position = Vector2(704, 288)
+
+[node name="TowersController" type="Node" parent="." node_paths=PackedStringArray("TowersRoot", "TowersTarget")]
+script = ExtResource("2_7cgpb")
+TowersRoot = NodePath("../Towers")
+TowersTarget = NodePath("../MouseTarget")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("5_4cfr4")
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 720896, 4, 65537, 720896, 4, 65538, 720896, 4, 131074, 720896, 4, 196610, 720896, 4, 196611, 720896, 4, 196612, 720896, 4, 196613, 720896, 4, 196614, 720896, 4, 196615, 720896, 4, 196616, 720896, 4, 131080, 720896, 4, 65544, 720896, 4, 65545, 720896, 4, 65546, 720896, 4, 65547, 720896, 4, 131072, 720896, 5, 262147, 720896, 5, 262148, 720896, 5, 262149, 720896, 5, 262150, 720896, 5, 262151, 720896, 5, 131082, 720896, 5, 131083, 720896, 5, 0, 720896, 3, 1, 720896, 3, 2, 720896, 3, 8, 720896, 3, 9, 720896, 3, 10, 720896, 3, 11, 720896, 3, 131075, 851968, 4, 131076, 720896, 3, 131077, 720896, 3, 131078, 720896, 3, 131079, 917504, 4, 131081, 851968, 3, 262152, 720896, 5, 262153, 786432, 5, 196617, 786432, 4, 262146, 720896, 5, 131073, 917504, 3, 196609, 655360, 4, 65543, 655360, 4, 262145, 655360, 5, 65539, 786432, 4, 3, 786432, 3, 7, 655360, 3, 196608, 917504, 5, 262144, 917504, 5, 327680, 917504, 5, 327681, 917504, 5, 327682, 917504, 5, 327683, 917504, 5, 327684, 917504, 5, 327685, 917504, 5, 327686, 917504, 5, 327687, 917504, 5, 327688, 917504, 5, 327689, 917504, 5, 327690, 917504, 5, 262154, 917504, 5, 196618, 917504, 5, 262155, 917504, 5, 327691, 917504, 5, 196619, 917504, 5, -65525, 917504, 5, -131061, 917504, 5, -131062, 917504, 5, -65526, 917504, 5, -65527, 917504, 5, -131063, 917504, 5, -131064, 917504, 5, -131065, 917504, 5, -131066, 917504, 5, -131067, 917504, 5, -131068, 917504, 5, -131069, 917504, 5, -131070, 917504, 5, -131071, 917504, 5, -131072, 917504, 5, -65536, 917504, 5, -65535, 917504, 5, -65534, 917504, 5, -65533, 917504, 5, -65532, 917504, 5, -65531, 917504, 5, -65530, 917504, 5, -65529, 917504, 5, -65528, 917504, 5, 4, 917504, 5, 5, 917504, 5, 6, 917504, 5, 65542, 917504, 5, 65541, 917504, 5, 65540, 917504, 5)
+
+[node name="Path2D" type="Path2D" parent="TileMap"]
+curve = SubResource("Curve2D_ek0j3")
+
+[node name="EnemyUnit" parent="TileMap/Path2D" instance=ExtResource("6_px0yo")]
+position = Vector2(0, 192)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(782, 375)
+limit_left = 0
+limit_top = 0
+limit_right = 1536
+limit_bottom = 768
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_screen = false
+editor_draw_limits = true
+script = ExtResource("7_vesi6")
+Speed = 500.0
+
+[node name="MouseTarget" type="Node2D" parent="."]
+script = ExtResource("3_hu3jr")
+
+[node name="Sprite2D" type="Sprite2D" parent="MouseTarget"]
+texture = ExtResource("1_gh60a")
+region_enabled = true
+region_rect = Rect2(2432, 1408, 128, 128)

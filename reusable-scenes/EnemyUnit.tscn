@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cckf5h5lbbpcg"]
+
+[ext_resource type="Script" path="res://src/Unit.cs" id="1_aoisb"]
+[ext_resource type="Texture2D" uid="uid://4lt17y7u1l05" path="res://assets/kenney-tower-defense/raw.svg" id="2_66lhm"]
+
+[node name="EnemyUnit" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_aoisb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_66lhm")
+region_enabled = true
+region_rect = Rect2(1920, 1280, 128, 128)
