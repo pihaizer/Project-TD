@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4lt17y7u1l05"
-path="res://.godot/imported/raw.svg-99d48175891efe072fd37f396ed6999e.ctex"
+uid="uid://daqf6p57yn3wv"
+path="res://.godot/imported/crosshair044.png-3ebabd431cacdca7c06cf48426154341.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kenney-tower-defense/raw.svg"
-dest_files=["res://.godot/imported/raw.svg-99d48175891efe072fd37f396ed6999e.ctex"]
+source_file="res://assets/crosshair044.png"
+dest_files=["res://.godot/imported/crosshair044.png-3ebabd431cacdca7c06cf48426154341.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=2.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

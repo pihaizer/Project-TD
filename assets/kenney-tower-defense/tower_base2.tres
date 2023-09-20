@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cphm0fumsr8fy"]
+
+[ext_resource type="Texture2D" uid="uid://cbxpx1gfpmvxt" path="res://assets/kenney-tower-defense/towerDefense_tilesheet@2.png" id="1_r71nj"]
+
+[resource]
+atlas = ExtResource("1_r71nj")
+region = Rect2(2560, 896, 128, 128)

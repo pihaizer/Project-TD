@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://nfocm0u1gwxk"]
+
+[ext_resource type="Texture2D" uid="uid://1v6o1wj0vy3n" path="res://assets/Topdown Shooter/spritesheet_characters.png" id="1_din2m"]
+[ext_resource type="Script" path="res://src/Player.cs" id="1_j80n5"]
+[ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="2_tjat1"]
+[ext_resource type="PackedScene" uid="uid://bybstfav7hsft" path="res://reusable-scenes/Bullet.tscn" id="2_wqdjv"]
+[ext_resource type="Script" path="res://src/PlayerAnimator.cs" id="4_0lxus"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oa6ux"]
+radius = 20.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ShootPosition")]
+motion_mode = 1
+script = ExtResource("1_j80n5")
+MoveSpeed = 500.0
+ShootPosition = NodePath("ShootPosition")
+BulletScene = ExtResource("2_wqdjv")
+
+[node name="Smoothing2D" type="Node2D" parent="."]
+script = ExtResource("2_tjat1")
+
+[node name="IdleSprite2D" type="Sprite2D" parent="Smoothing2D"]
+texture_filter = 1
+position = Vector2(-1, 0)
+texture = ExtResource("1_din2m")
+region_enabled = true
+region_rect = Rect2(369, 352, 28, 44)
+
+[node name="ShootingSprite2D" type="Sprite2D" parent="Smoothing2D"]
+texture_filter = 1
+texture = ExtResource("1_din2m")
+offset = Vector2(8.5, 0)
+region_enabled = true
+region_rect = Rect2(112, 88, 47, 44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oa6ux")
+
+[node name="Animator" type="Node" parent="." node_paths=PackedStringArray("IdleSprite", "ShootSprite")]
+script = ExtResource("4_0lxus")
+IdleSprite = NodePath("../Smoothing2D/IdleSprite2D")
+ShootSprite = NodePath("../Smoothing2D/ShootingSprite2D")
+
+[node name="ShootPosition" type="Node2D" parent="."]
+position = Vector2(31, 9)

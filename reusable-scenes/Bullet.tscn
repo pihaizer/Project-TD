@@ -10,6 +10,8 @@ Speed = 2500.0
 HitEffect = ExtResource("2_a4p6q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_6oktw")
 region_enabled = true
 region_rect = Rect2(2816, 1408, 128, 128)

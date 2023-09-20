@@ -1,13 +1,80 @@
-[gd_scene load_steps=3 format=3 uid="uid://cckf5h5lbbpcg"]
+[gd_scene load_steps=9 format=3 uid="uid://cckf5h5lbbpcg"]
 
 [ext_resource type="Script" path="res://src/Unit.cs" id="1_aoisb"]
-[ext_resource type="Texture2D" uid="uid://4lt17y7u1l05" path="res://assets/kenney-tower-defense/raw.svg" id="2_66lhm"]
+[ext_resource type="Texture2D" uid="uid://cbxpx1gfpmvxt" path="res://assets/kenney-tower-defense/towerDefense_tilesheet@2.png" id="2_5yj2n"]
+[ext_resource type="Script" path="res://src/UnitHealthUI.cs" id="3_wm6xv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5o12d"]
+radius = 30.0
+
+[sub_resource type="Gradient" id="Gradient_unv6s"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.486275)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tmmi8"]
+gradient = SubResource("Gradient_unv6s")
+
+[sub_resource type="Gradient" id="Gradient_qngdw"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.752941, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ynio"]
+gradient = SubResource("Gradient_qngdw")
 
 [node name="EnemyUnit" type="PathFollow2D"]
 loop = false
 script = ExtResource("1_aoisb")
+MaxHealth = 30.0
+Health = 30.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_66lhm")
+texture_filter = 1
+texture = ExtResource("2_5yj2n")
 region_enabled = true
-region_rect = Rect2(1920, 1280, 128, 128)
+region_rect = Rect2(1921, 1281, 126, 126)
+
+[node name="MainCollider" type="Area2D" parent="."]
+collision_layer = 9
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainCollider"]
+visible = false
+shape = SubResource("CircleShape2D_5o12d")
+
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("Unit", "HealthBarTextureRect")]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = 28.0
+offset_right = 30.0
+offset_bottom = 36.0
+grow_horizontal = 2
+script = ExtResource("3_wm6xv")
+Unit = NodePath("..")
+HealthBarTextureRect = NodePath("HP")
+
+[node name="Background" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_tmmi8")
+expand_mode = 1
+
+[node name="HP" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_8ynio")
+expand_mode = 1

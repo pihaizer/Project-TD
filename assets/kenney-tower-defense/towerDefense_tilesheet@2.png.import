@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4lt17y7u1l05"
-path="res://.godot/imported/raw.svg-99d48175891efe072fd37f396ed6999e.ctex"
+uid="uid://cbxpx1gfpmvxt"
+path="res://.godot/imported/towerDefense_tilesheet@2.png-54905ef8203bd17a39a3bb45a2885d49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kenney-tower-defense/raw.svg"
-dest_files=["res://.godot/imported/raw.svg-99d48175891efe072fd37f396ed6999e.ctex"]
+source_file="res://assets/kenney-tower-defense/towerDefense_tilesheet@2.png"
+dest_files=["res://.godot/imported/towerDefense_tilesheet@2.png-54905ef8203bd17a39a3bb45a2885d49.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -31,7 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
-svg/scale=2.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
+detect_3d/compress_to=0
